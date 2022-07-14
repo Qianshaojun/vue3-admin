@@ -1,6 +1,6 @@
 # Vue 3 + TypeScript + Vite + Pinia
 
-## git clone
+## npm install
 
 ## server:npm run dev
 

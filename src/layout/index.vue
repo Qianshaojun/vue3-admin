@@ -58,6 +58,7 @@
         align-items: center;
         justify-content: center;
         overflow: auto;
+        border-right: 1px solid #ffffff;
     }
 }
 :deep(.ant-layout-sider-children){

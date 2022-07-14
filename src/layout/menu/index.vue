@@ -68,7 +68,6 @@
         overflow-y: auto;
         position: relative;
         border-top:1px solid #e5e7eb;
-        border-right:1px solid #e5e7eb;
         li {
             padding: 15px 0;
             text-align: center;
