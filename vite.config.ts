@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import type { ConfigEnv } from 'vite'
 import vueI18n from '@intlify/vite-plugin-vue-i18n'
+// @ts-ignore
 import path from 'path'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import topLevelAwait from 'vite-plugin-top-level-await' // 解决打包top-await问题
