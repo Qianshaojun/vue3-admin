@@ -39,7 +39,7 @@
         }, {isShowLoading: true,page:pageService}).then((res) => {
             console.log('testRes', res)
         }).catch(err=>{
-            message.error(err.message)
+            err.message &&  message.error(err.message)
         })
     }
     const testModal = () => {

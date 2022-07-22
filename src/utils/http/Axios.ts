@@ -1,5 +1,5 @@
 import type { AxiosRequestConfig, AxiosInstance, AxiosResponse } from 'axios'
-import type { RequestOptions, CreateAxiosOptions, Result } from './types'
+import type { RequestOptions, CreateAxiosOptions, Result,ICustomerAxiosConfig } from './types'
 import axios from 'axios'
 import { AxiosCanceler, isFunction } from './axiosCancel'
 import { cloneDeep } from 'lodash-es'
@@ -69,7 +69,9 @@ export class QAxios {
 
         // 请求拦截器配置处理
         this.axiosInstance.interceptors.request.use((config: AxiosRequestConfig) => {
-            axiosCanceler.addPending(config)
+            if (!(config as ICustomerAxiosConfig)?.isMultipleRequest){
+                axiosCanceler.addPending(config)
+            }
             if (requestInterceptors && isFunction(requestInterceptors)) {
                 config = requestInterceptors(config)
             }
@@ -99,7 +101,7 @@ export class QAxios {
      * @description:   请求方法封装
      */
 
-    request<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
+    request<T = any>(config: AxiosRequestConfig |ICustomerAxiosConfig , options?: RequestOptions): Promise<T> {
         let conf: AxiosRequestConfig = cloneDeep(config)
 
         const transform = this.getTransform()

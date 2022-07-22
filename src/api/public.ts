@@ -26,7 +26,7 @@ export function HttpQueryPagination<T>(
         {
             url: '/system_api/query_pagination',
             method: RequestMethodEnum.Post,
-            data: { ...params, ...interfaceParams },
+            data: { ...params, ...interfaceParams }
         },
         option,
     )

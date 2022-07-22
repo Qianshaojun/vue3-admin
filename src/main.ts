@@ -6,6 +6,10 @@ import 'ant-design-vue/dist/antd.css'
 import 'ant-design-vue/dist/antd.variable.min.css'
 import '@/assets/style/index.less'
 import 'virtual:svg-icons-register' // vite svgIcon插件注册脚本
+// 引入vxe-table
+import 'xe-utils'
+import VXETable from 'vxe-table'
+import 'vxe-table/lib/style.css'
 import getInstancePlugin from '@/plugins/getAppInstance'
 
 import { setupStore } from '@/stores'
@@ -34,6 +38,8 @@ async function setupApp() {
 
     // 安装Antd
     app.use(Antd)
+
+    app.use(VXETable)
 
     // 获取app实例
     app.use(getInstancePlugin)

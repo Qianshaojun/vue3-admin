@@ -5,6 +5,10 @@ export interface CreateAxiosOptions extends AxiosRequestConfig {
     transform?: AxiosTransform // 拦截器
     requestOptions?: RequestOptions
 }
+// 需要增加的config 用来控制功能
+export interface ICustomerAxiosConfig {
+    isMultipleRequest: boolean // 是否允许多个接口并发请求
+}
 
 // 额外接口参数
 export interface IInterfaceParams {

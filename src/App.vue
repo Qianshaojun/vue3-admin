@@ -9,11 +9,11 @@
 </template>
 
 <script setup lang="ts">
-    import {useLocale} from '@/locales/useLocale'
+    import { useLocale } from '@/locales/useLocale'
     import { watchEffect } from 'vue'
     import { useRoute } from 'vue-router'
     import { translateMenuTitle } from '@/hooks/useTransMenuTitle'
-    const {getAntdLocale} = useLocale()
+    const { getAntdLocale } = useLocale()
     const route = useRoute()
 
     watchEffect(() => {
@@ -21,7 +21,7 @@
             // 翻译网页标题
             (document as any).title = route.query?.name
         } else {
-            document.title = translateMenuTitle(route.name as string) ||  document.title
+            document.title = translateMenuTitle(route.name as string) || document.title
         }
     })
 </script>
