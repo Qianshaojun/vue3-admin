@@ -1,13 +1,14 @@
 <template>
     <FlexContainer>
-        <template #flex-header>采购合同管理</template>
+        <template #flex-header>
+            <div>xxx</div>
+            <div>xxx</div>
+            <div>xxx</div>
+        </template>
         <template #flex-main>
             <AutoVxeTable></AutoVxeTable>
         </template>
     </FlexContainer>
 </template>
 
-
-<script lang="ts" setup>
-
-</script>
+<script lang="ts" setup></script>
