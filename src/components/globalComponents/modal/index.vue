@@ -1,18 +1,25 @@
 <template>
     <div ref="modalWrapRef" class="custom-modal" :class="{ fullscreen: fullscreenModel }">
         <a-modal
-            v-model:visible="visible" :width="width" :centered="true" :footer="null"
-            :mask-closable="false" :get-container="() => modalWrapRef">
+            v-model:visible="visible"
+            :width="width"
+            :centered="true"
+            :footer="null"
+            :mask-closable="false"
+            :get-container="() => modalWrapRef"
+        >
             <template #title>
-                <div ref="modalTitleRef" style="width: 100%; cursor: move">{{title}}</div>
+                <div ref="modalTitleRef" style="width: 100%; cursor: move">{{ title }}</div>
             </template>
             <template #closeIcon>
                 <div style="padding-right: 10px">
                     <a-space size="middle" @click.stop>
-                        <fullscreen-outlined
-                            v-if="!fullscreenModel"
-                            @click="fullscreenModel = true" />
-                        <fullscreen-exit-outlined v-else @click="restore" />
+                        <!--todo 对子组件有影响-->
+                        <!--                        <fullscreen-outlined-->
+                        <!--                            v-if="!fullscreenModel"-->
+                        <!--                            @click="fullscreenModel = true"-->
+                        <!--                        />-->
+                        <!--                        <fullscreen-exit-outlined v-else @click="restore" />-->
                         <close-outlined @click="closeModal" />
                     </a-space>
                 </div>
@@ -28,9 +35,13 @@
 </template>
 
 <script lang="ts" setup>
-    import {ref,computed,CSSProperties,watch,watchEffect} from 'vue'
-    import {FullscreenOutlined, FullscreenExitOutlined, CloseOutlined} from '@ant-design/icons-vue'
-    import {useDraggable} from '@vueuse/core'
+    import { ref, computed, CSSProperties, watch, watchEffect } from 'vue'
+    import {
+        FullscreenOutlined,
+        FullscreenExitOutlined,
+        CloseOutlined,
+    } from '@ant-design/icons-vue'
+    import { useDraggable } from '@vueuse/core'
 
     const modalWrapRef = ref<HTMLDivElement>()
 
@@ -39,12 +50,13 @@
     defineProps({
         title: {
             type: String,
-            required: true
+            required: true,
+            default: 'Dialog',
         },
         width: {
             type: [Number, String],
-            default: 520
-        }
+            default: 520,
+        },
     })
     const emit = defineEmits(['cancel'])
     const visible = ref<boolean>(true)
@@ -75,7 +87,8 @@
             startX.value = x.value
             startY.value = y.value
             const bodyRect = document.body.getBoundingClientRect()
-            const titleRect:any =  modalTitleRef.value && modalTitleRef.value.getBoundingClientRect()
+            const titleRect: any =
+                modalTitleRef.value && modalTitleRef.value.getBoundingClientRect()
             dragRect.value.right = bodyRect.width - titleRect.width
             dragRect.value.bottom = bodyRect.height - titleRect.height
             preTransformX.value = transformX.value
@@ -110,39 +123,38 @@
 </script>
 
 <style lang="less">
-.custom-modal {
-    &.fullscreen {
-        .ant-modal {
-            top: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
-            left: 0 !important;
-            width: 100% !important;
-            height: 100% !important;
-            max-width: 100vw !important;
-        }
+    .custom-modal {
+        &.fullscreen {
+            .ant-modal {
+                top: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                max-width: 100vw !important;
+            }
 
-        .ant-modal-content {
-            width: 100% !important;
-            height: 100% !important;
+            .ant-modal-content {
+                width: 100% !important;
+                height: 100% !important;
+            }
         }
-    }
-    .ant-modal {
-        .ant-modal-content {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            height: 100%;
-            min-height: 200px;
-            min-width: 200px;
-            overflow: hidden;
-            .ant-modal-body {
-                flex: auto;
-                overflow: auto;
+        .ant-modal {
+            .ant-modal-content {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
                 height: 100%;
+                min-height: 200px;
+                min-width: 200px;
+                overflow: hidden;
+                .ant-modal-body {
+                    flex: auto;
+                    overflow: auto;
+                    height: 100%;
+                }
             }
         }
     }
-}
 </style>
-

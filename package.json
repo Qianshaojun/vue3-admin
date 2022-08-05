@@ -22,7 +22,8 @@
     "vue-i18n": "^9.2.0-beta.36",
     "vue-router": "^4.0.15",
     "vxe-table": "^4.2.8",
-    "xe-utils": "^3.5.4"
+    "xe-utils": "^3.5.4",
+    "xlsx": "^0.17.0"
   },
   "devDependencies": {
     "@intlify/vite-plugin-vue-i18n": "^4.0.0",
